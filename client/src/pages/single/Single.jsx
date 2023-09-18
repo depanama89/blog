@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/authContext";
 import newRequest from "../../util/NewRequest";
 
 const Single = () => {
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState({});
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,15 +42,15 @@ const Single = () => {
     }
     }
 
-  // const getText = (html) =>{
-  //   const doc = new DOMParser().parseFromString(html, "text/html")
-  //   return doc.body.textContent
-  // }
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
 
   return (
     <div className="single">
       <div className="content">
-        <img src={post?.img} alt="" />
+        <img src={`../uploads/${post?.img}`} alt="" />
         <div className="user">
           {post.userImg && <img
             src={post.userImg}
@@ -62,7 +62,7 @@ const Single = () => {
           </div>
           {currentUser.username === post.username && (
             <div className="edit">
-              <Link to={`/write?edit=2`} state={post}>
+              <Link to={`/write?edit=${postId}`} state={post}>
                 <img src={Edit} alt="" />
               </Link>
               <img onClick={handleDelete} src={Delete} alt="" />
@@ -70,7 +70,7 @@ const Single = () => {
           )}
         </div>
         <h1>{post.title}</h1>
-        { post.desc_p}    
+        {getText( post.desc_p)}    
         </div>
       <Menu cat={post.cat}/>
     </div>

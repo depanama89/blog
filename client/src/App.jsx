@@ -38,7 +38,7 @@ function App() {
           element:<Home/>
         },
         {
-          path:"/post/:id",
+          path:"/posts/:id",
           element:<Single/>
         },
         {

@@ -29,7 +29,7 @@ const Header = () => {
           <Link className='link'  to="/?cat=design">
             <h6>DESIGN</h6>
           </Link>
-          <Link className='link'  to="/?cat=art">
+          <Link className='link'  to="/?cat=food">
             <h6>FOOD</h6>
           </Link>
           <span>{currentUser?.username}</span>
